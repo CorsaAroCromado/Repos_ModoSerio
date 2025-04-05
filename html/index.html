@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Cadastro de Cliente</title>
 </head>
 <body>
-    <h1>Bem-vindo ao index.html</h1>
+  <h1>Cadastro de Cliente</h1>
+  <form id="form-cliente">
+    <input type="text" name="nome" placeholder="Nome" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="text" name="telefone" placeholder="Telefone"><br>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <div id="mensagem"></div>
+
+  <script>
+    document.getElementById('form-cliente').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const dados = {
+        nome: form.nome.value,
+        email: form.email.value,
+        telefone: form.telefone.value,
+      };
+
+      const res = await fetch('/clientes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+
+      const resultado = await res.json();
+      document.getElementById('mensagem').innerText = resultado.mensagem || resultado.erro;
+    });
+  </script>
 </body>
 </html>

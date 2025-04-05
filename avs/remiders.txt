@@ -1,0 +1,28 @@
+
+--instala o Postgres e .env
+npm install pg dotenv
+
+--apaga o docker do banco
+docker rm -f meu_postgres
+
+--inicia o docker do banco
+docker start meu_postgres
+
+--para o docker do banco
+docker stop meu_postgres
+
+--verifica o docker
+docker ps
+
+--conecta no banco do docker na porta 5433
+psql -h localhost -p 5433 -U meu_usuario -d meubanco -p minhasenha123
+
+--CREATE da tabela cliente 
+CREATE TABLE clientes (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  telefone VARCHAR(20)
+);
+
+

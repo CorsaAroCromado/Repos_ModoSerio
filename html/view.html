@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+  <title>Visualizar Cliente</title>
+</head>
+<body>
+    <div class="container">
+    <form class="form-center" id="form-edit">
+        <h2>Visualizar Cliente</h2>
+        <input type="text" name="nome" placeholder="Nome" readonly>
+        <input type="email" name="email" placeholder="Email" readonly>
+        <input type="text" name="telefone" placeholder="Telefone" readonly>
+        <div class="btn-container-vol">
+        <a href="/listar-clientes">
+            <button class="btn-clear" type="button">Voltar</button>
+        </a>
+    </div>
+    </form>
+</div>
+    </body>
+    
+
+  <script>
+    async function carregarCliente() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+  
+      if (!id) {
+        alert('ID do cliente não informado!');
+        window.location.href = '/listar-clientes';
+        return;
+      }
+  
+      try {
+        const res = await fetch(`/clientes/${id}`);
+        
+        if (!res.ok) {
+          throw new Error('Cliente não encontrado');
+        }
+  
+        const cliente = await res.json();
+  
+        if (!cliente || !cliente.nome) {
+          throw new Error('Cliente inválido');
+        }
+  
+        document.querySelector('input[name="nome"]').value = cliente.nome;
+        document.querySelector('input[name="email"]').value = cliente.email;
+        document.querySelector('input[name="telefone"]').value = cliente.telefone;
+      } catch (err) {
+        alert('Cliente não encontrado.');
+        window.location.href = '/listar-clientes';
+      }
+    }
+  
+    carregarCliente();
+  </script>
+  
+</body>
+</html>

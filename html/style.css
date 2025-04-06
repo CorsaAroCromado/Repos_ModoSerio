@@ -1,0 +1,213 @@
+/* Página de listar Usuários */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container-table {
+    margin: 40px;
+  }
+  
+  .titulo-clientes {
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .form_center {
+    align-items: center;
+  }
+  
+  .div-buttons {
+    
+  }
+  .btn-view {
+    padding: 12px;
+    width: 27%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 2px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-edit {
+    padding: 12px;
+    width: 27%;
+    background-color: rgb(107, 107, 242);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 2px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-delete {
+    padding: 12px;
+    width: 27%;
+    background-color: rgb(233, 44, 44);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Página de inserir usuário */
+  
+  /* Centraliza o container no meio da tela */
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f5f7fa;
+  }
+  
+  .container h1,h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  .btn-container-vol{
+    width: 100%;
+  }
+  
+  /* Estilização do formulário */
+  .form-center {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-center input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .btn-submit {
+    padding: 12px;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-clear {
+    padding: 12px;
+    width: 100%;
+    background-color: #cf0e0e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-container {
+    display: flex;
+  }
+  
+  .form-center .btn-submit:hover {
+    background-color: #2aa12e;
+  }
+  
+  .form-center .btn-clear:hover {
+    background-color: #af0909;
+  }
+  
+  /* Mensagem de feedback */
+  #mensagem {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 480px) {
+    .form-center {
+      padding: 20px;
+    }
+  
+    .form-center input,
+    .form-center button {
+      font-size: 14px;
+    }
+  }
+
+  .btn-submit-edit{
+    padding: 12px;
+    width: 48%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 2px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-cancel-edit{
+    padding: 12px;
+    width: 50%;
+    background-color: #cf0e0e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+
+  

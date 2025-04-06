@@ -18,7 +18,7 @@ async function criarCliente(nome, email, telefone) {
 async function listarClientes() {
   try {
     const result = await pool.query('SELECT * FROM clientes');
-    console.table(result.rows);
+    //console.table(result.rows);
     return result.rows;
   } catch (error) {
     console.error("❌ Erro ao listar clientes:", error);

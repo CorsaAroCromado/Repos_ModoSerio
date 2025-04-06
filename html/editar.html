@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+  <title>Editar Cliente</title>
+</head>
+<body>
+  <div class="container"/>
+  <form class="form-center" id="form-edit">
+    <h2>Editar Cliente</h2>
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="telefone" placeholder="Telefone">
+    <div class="btn-container-edit">
+      <button class="btn-submit-edit" type="submit">Salvar</button>
+      <a href="/listar-clientes">
+        <button class="btn-cancel-edit" type="button">Cancelar</button>
+      </a>
+    </div>
+    <div id="mensagem"></div>
+  </form>
+</div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    async function carregarCliente() {
+      if (!id) {
+        alert('ID do cliente não informado!');
+        window.location.href = '/listar-clientes';
+        return;
+      }
+
+      try {
+        const res = await fetch(`/clientes/${id}`);
+        if (!res.ok) throw new Error('Cliente não encontrado');
+
+        const cliente = await res.json();
+        if (!cliente || !cliente.nome) throw new Error('Cliente inválido');
+
+        document.querySelector('input[name="nome"]').value = cliente.nome;
+        document.querySelector('input[name="email"]').value = cliente.email;
+        document.querySelector('input[name="telefone"]').value = cliente.telefone;
+      } catch (err) {
+        alert('Cliente não encontrado.');
+        window.location.href = '/listar-clientes';
+      }
+    }
+
+    document.getElementById('form-edit').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nome = e.target.nome.value;
+      const email = e.target.email.value;
+      const telefone = e.target.telefone.value;
+
+      try {
+        const res = await fetch(`/clientes/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, email, telefone })
+        });
+
+        const resultado = await res.json();
+
+        document.getElementById('mensagem').innerText = resultado.mensagem || resultado.erro;
+
+        if (res.ok) {
+          setTimeout(() => {
+            window.location.href = '/listar-clientes';
+          }, 1500);
+        }
+      } catch (err) {
+        document.getElementById('mensagem').innerText = 'Erro ao atualizar cliente.';
+      }
+    });
+
+    carregarCliente();
+  </script>
+</body>
+</html>

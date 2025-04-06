@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastro de Cliente</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-  <h1>Cadastro de Cliente</h1>
-  <form id="form-cliente">
-    <input type="text" name="nome" placeholder="Nome" required><br>
-    <input type="email" name="email" placeholder="Email" required><br>
-    <input type="text" name="telefone" placeholder="Telefone"><br>
-    <button type="submit">Cadastrar</button>
-  </form>
-
-  <div id="mensagem"></div>
+  <div class="container">
+    <h1>Cadastro de Cliente</h1>
+    <form class="form-center" id="form-cliente">
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="telefone" placeholder="Telefone">
+      <div class="btn-container">
+        <button class="btn-submit" type="submit">Cadastrar</button>
+        <button class="btn-clear" type="reset">Limpar</button>
+      </div>
+    </form>
+    <div id="mensagem"></div>
+  </div>
 
   <script>
     document.getElementById('form-cliente').addEventListener('submit', async (e) => {
